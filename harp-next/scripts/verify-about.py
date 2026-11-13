@@ -1,0 +1,22 @@
+from playwright.sync_api import sync_playwright
+base="http://localhost:3100"; R=[]
+def ok(n,c): R.append(bool(c)); print('PASS' if c else 'FAIL',n)
+with sync_playwright() as p:
+    b=p.chromium.launch(); pg=b.new_context(viewport={'width':1440,'height':900}).new_page()
+    pg.goto(base+'/about',wait_until='networkidle'); pg.wait_for_timeout(1500)
+    ok('H1 exposes full title via aria-label',pg.locator('h1 > span[aria-label]').get_attribute('aria-label')=='Built For Tomorrow')
+    ok('12 leadership cards',pg.locator('section[aria-labelledby=leadership-title] li').count()==12)
+    ok('5 timeline items',pg.locator('section[aria-labelledby=timeline-title] ol > li').count()==5)
+    t1=pg.evaluate("getComputedStyle(document.querySelector('section[aria-hidden] div div')).transform")
+    pg.evaluate("window.scrollTo(0,500)"); pg.wait_for_timeout(500)
+    t2=pg.evaluate("getComputedStyle(document.querySelector('section[aria-hidden] div div')).transform")
+    ok('parallax image moves on scroll',t1!=t2)
+    loc=pg.locator('section[aria-label="Our Locations"]'); loc.scroll_into_view_if_needed()
+    loc.get_by_role('button',name='London').hover(); pg.wait_for_timeout(600)
+    ok('hover London → corrected email + country',loc.get_by_text('LND@precept.com').count()==1 and loc.get_by_text('United Kingdom').count()==1)
+    ok('no "precpet" typo anywhere',pg.content().lower().count('precpet')==0)
+    ok('no "Realtions" typo',pg.content().count('Realtions')==0)
+    m=b.new_context(viewport={'width':390,'height':844},has_touch=True,is_mobile=True).new_page(); m.goto(base+'/about',wait_until='networkidle')
+    ok('mobile: no horizontal overflow',m.evaluate("document.documentElement.scrollWidth<=document.documentElement.clientWidth"))
+    b.close()
+print(sum(R),'/',len(R))
