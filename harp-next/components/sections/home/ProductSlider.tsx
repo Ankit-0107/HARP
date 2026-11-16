@@ -15,7 +15,7 @@ export function ProductSlider({ slides }: { slides: Slide[] }) {
   const [paused, setPaused] = useState(false);
   const s = slides[i]!;
   return (
-    <section id="hero-slider" aria-roledescription="carousel" aria-label="Featured capabilities" className="container-x py-2 md:py-4"
+    <section id="hero-slider" aria-roledescription="carousel" aria-label="Featured products" className="container-x py-2 md:py-4"
       onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
       <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-black text-white md:aspect-[16/8.2]">
         <AnimatePresence initial={false}>

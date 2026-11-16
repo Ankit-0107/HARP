@@ -7,7 +7,6 @@ import { AboutIntro } from "@/components/sections/home/AboutIntro";
 import { ProductSlider } from "@/components/sections/home/ProductSlider";
 // CapableIndustries hidden for now; uncomment when ready to use:
 // import { CapableIndustries } from "@/components/sections/home/CapableIndustries";
-import { ProcessOrbit } from "@/components/sections/home/ProcessOrbit";
 import { Stats } from "@/components/sections/home/Stats";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { ClientsTicker } from "@/components/sections/home/ClientsTicker";
@@ -28,7 +27,6 @@ export default function HomePage() {
       {/* CapableIndustries hidden for now; uncomment when ready to use:
       <CapableIndustries slides={h.industries} />
       */}
-      <ProcessOrbit steps={h.process.steps} label={h.process.label} />
       <Stats c={h.stats} />
       <Testimonials items={h.testimonials} />
       <ClientsTicker label={h.clients.label} names={h.clients.names} />

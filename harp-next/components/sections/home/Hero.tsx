@@ -10,13 +10,13 @@ import type { SiteContent } from "@/content/types";
 
 export function Hero({ c }: { c: SiteContent["home"]["hero"] }) {
   return (
-    <section className="relative isolate h-svh min-h-[640px] overflow-hidden bg-black text-white" aria-labelledby="hero-title">
+    <section className="relative isolate h-svh min-h-[600px] overflow-hidden bg-black text-white md:min-h-[640px]" aria-labelledby="hero-title">
       <HeroVideo videoId="home-hero-video" posterId="hero-poster" className="absolute inset-0 -z-20 h-full w-full object-cover" />
       <DotReveal className="-z-10" />
-      <div className="container-x flex h-full flex-col justify-center pb-24">
-        <h1 id="hero-title" className="h-display flex w-full flex-col text-[clamp(3.5rem,13vw,15rem)]">
+      <div className="container-x flex h-full flex-col justify-center pb-28 md:pb-24">
+        <h1 id="hero-title" className="h-display flex w-full flex-col text-[clamp(2.75rem,11.5vw,14rem)] leading-[0.9] md:text-[clamp(3.5rem,13vw,15rem)] md:leading-[0.8]">
           {/* Line 1: HARP on the left + logo on the right of HARP */}
-          <div className="flex w-full items-center justify-start gap-4 sm:gap-6 md:gap-10">
+          <div className="flex w-full items-center justify-start gap-2.5 md:gap-10">
             <span className="block">
               <SplitText text={c.lines[0]} trigger="mount" delay={0.9} />
             </span>
@@ -27,13 +27,13 @@ export function Hero({ c }: { c: SiteContent["home"]["hero"] }) {
                 initial={{ opacity: 0, y: "0.35em", filter: "blur(10px)", scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
                 transition={{ duration: 0.9, ease, delay: 0.95 }}
-                className="h-[clamp(8.5rem,8vw,10rem)] w-auto object-contain -translate-x-7"
+                className="h-[0.82em] w-auto object-contain translate-y-[0.02em] md:h-[clamp(8.5rem,8vw,10rem)] md:translate-y-0 md:-translate-x-7"
               />
             </span>
           </div>
 
           {/* Line 2: ROBOTICS below on the right */}
-          <div className="flex w-full justify-end">
+          <div className="mt-2 flex w-full justify-end md:mt-0">
             <span className="block text-right">
               <SplitText text={c.lines[1]} trigger="mount" delay={1.2} />
             </span>

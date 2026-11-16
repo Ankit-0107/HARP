@@ -9,7 +9,8 @@ const STEP_DEG = 24;
 const pad = (n: number) => String(n + 1).padStart(2, "0");
 
 /**
- * A11 — Process Orbit. A 500svh scroll track with a sticky stage: a tick-marked ring rotates as you scroll,
+ * A11 — Process Orbit (Archived from Home Page).
+ * A 500svh scroll track with a sticky stage: a tick-marked ring rotates as you scroll,
  * bringing the next numbered step to the 3 o'clock position while the step text cross-fades.
  * All steps stay in the DOM (sr-only list) for assistive tech / SEO.
  */

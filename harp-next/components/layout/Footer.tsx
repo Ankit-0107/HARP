@@ -29,6 +29,20 @@ export function Footer({ c }: { c: SiteContent }) {
             <NewsletterForm {...c.nav.newsletter} />
           </div>
         </div>
+
+        {/* ── Giant brand wordmark ── */}
+        <div
+          className="pointer-events-none select-none overflow-hidden -translate-y-18 -mb-40"
+          aria-hidden
+        >
+          <p
+            className="whitespace-nowrap text-center font-[family-name:var(--font-skywall)] font-normal uppercase leading-[0.82] tracking-[-0.002em] text-white"
+            style={{ fontSize: "clamp(5rem, 30vw, 28rem)" }}
+          >
+            HARP ROBOTICS
+          </p>
+        </div>
+
         <div className="flex flex-col gap-3 border-t border-white/15 pt-5 font-[family-name:var(--font-space-mono)] text-[12px] text-white/60 md:flex-row md:items-center md:justify-between">
           <p>{c.brand.legalLine.replace(/^©\s?\d{4}/, `© ${year}`)}</p>
           <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>

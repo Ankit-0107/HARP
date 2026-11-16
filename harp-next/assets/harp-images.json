@@ -11,5 +11,11 @@
   "timeline-2020": "/assets/harp/milestone2.webp",
   "timeline-2022": "/assets/harp/milestone3.webp",
   "timeline-2024": "/assets/harp/milestone4.webp",
-  "timeline-present": "/assets/harp/milestone5.webp"
+  "timeline-present": "/assets/harp/milestone5.webp",
+  "news-products": "/assets/harp/Products.webp",
+  "news-workshops": "/assets/harp/Workshops.webp",
+  "news-3d-printing": "/assets/harp/3D_Printing_Services.webp",
+  "Products": "/assets/harp/Products.webp",
+  "Workshops": "/assets/harp/Workshops.webp",
+  "3D_Printing_Services": "/assets/harp/3D_Printing_Services.webp"
 }

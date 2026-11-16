@@ -20,7 +20,7 @@ export default function CapabilitiesPage() {
           <h1 className="h-display text-[clamp(3rem,9vw,9rem)] font-light"><SplitText text={k.title} trigger="mount" delay={0.2} stagger={0.035} /></h1>
         </div>
       </section>
-      <section aria-label="Capabilities" className="grid gap-1">{k.items.map((it) => <CapabilityRow key={it.index} item={it} />)}</section>
+      <section aria-label="Products" className="grid gap-1">{k.items.map((it) => <CapabilityRow key={it.index} item={it} />)}</section>
       <IndustriesIndex c={k.industries} />
       <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />
     </>
