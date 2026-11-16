@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { sans, mono, spaceMono } from "./fonts";
+import { sans, mono, spaceMono, skywall } from "./fonts";
 import "./globals.css";
 import { getContent } from "@/lib/content";
 import { MotionProvider } from "@/components/providers/MotionProvider";
@@ -21,7 +21,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, view
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${spaceMono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${spaceMono.variable} ${skywall.variable}`}>
       <body>
         <MotionProvider>
           <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[200] focus:bg-white focus:px-3 focus:py-2">Skip to content</a>

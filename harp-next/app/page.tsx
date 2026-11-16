@@ -5,12 +5,13 @@ import { PreFooterCta } from "@/components/layout/PreFooterCta";
 import { Hero } from "@/components/sections/home/Hero";
 import { AboutIntro } from "@/components/sections/home/AboutIntro";
 import { ProductSlider } from "@/components/sections/home/ProductSlider";
-import { CapableIndustries } from "@/components/sections/home/CapableIndustries";
+// CapableIndustries hidden for now; uncomment when ready to use:
+// import { CapableIndustries } from "@/components/sections/home/CapableIndustries";
 import { ProcessOrbit } from "@/components/sections/home/ProcessOrbit";
 import { Stats } from "@/components/sections/home/Stats";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { ClientsTicker } from "@/components/sections/home/ClientsTicker";
-import { NewsroomPreview } from "@/components/sections/home/NewsroomPreview";
+import { NewsroomExpandCards } from "@/components/sections/home/NewsroomExpandCards";
 
 export const metadata = pageMetadata("home", "/");
 
@@ -23,12 +24,14 @@ export default function HomePage() {
       <Hero c={h.hero} />
       <AboutIntro c={h.about} />
       <ProductSlider slides={h.slider} />
+      <NewsroomExpandCards eyebrow="Explore" title="Categories" entries={c.newsroom.entries} />
+      {/* CapableIndustries hidden for now; uncomment when ready to use:
       <CapableIndustries slides={h.industries} />
+      */}
       <ProcessOrbit steps={h.process.steps} label={h.process.label} />
       <Stats c={h.stats} />
       <Testimonials items={h.testimonials} />
       <ClientsTicker label={h.clients.label} names={h.clients.names} />
-      <NewsroomPreview eyebrow={h.newsroom.eyebrow} title={h.newsroom.title} entries={c.newsroom.entries} />
       <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />
     </>
   );

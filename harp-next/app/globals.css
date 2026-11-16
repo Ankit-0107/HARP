@@ -3,6 +3,7 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-pt-mono), ui-monospace, "SF Mono", monospace;
+  --font-skywall: var(--font-skywall), sans-serif;
 
   /* Palette consolidated from the ~60 Framer --token-* variables. Brand colours for HARP are TBD. */
   --color-ink: #000;

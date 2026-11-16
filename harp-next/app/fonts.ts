@@ -20,3 +20,10 @@ export const spaceMono = localFont({
   variable: "--font-space-mono",
   display: "swap",
 });
+
+// Skywall font imported from public/fonts/skywall
+export const skywall = localFont({
+  src: "../public/fonts/skywall/fe_skywall_SkywallDemo.otf",
+  variable: "--font-skywall",
+  display: "swap",
+});
