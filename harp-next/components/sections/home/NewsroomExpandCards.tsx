@@ -63,6 +63,8 @@ function CardImage({ entry, sizes }: { entry: NewsEntry; sizes: string }) {
   return <AssetPlaceholder assetId={entry.heroAssetId} alt={entry.title} tone="dark" mode={mode} />;
 }
 
+const CARD_LINKS = ["/capabilities", "/newsroom", "/404"];
+
 /** Circular + / × indicator icon */
 function IndicatorIcon({ isActive }: { isActive: boolean }) {
   return (
@@ -81,8 +83,6 @@ function IndicatorIcon({ isActive }: { isActive: boolean }) {
     </motion.div>
   );
 }
-
-const CARD_LINKS = ["/capabilities", "/newsroom", "/404"];
 
 /* ─── Desktop Card ─── */
 function ExpandCard({

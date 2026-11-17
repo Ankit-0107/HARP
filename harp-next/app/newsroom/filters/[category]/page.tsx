@@ -25,7 +25,7 @@ export default async function NewsroomFilterPage({ params }: { params: Promise<P
   const { category } = await params;
   if (!(category in CATEGORY_SLUGS)) notFound();
   const c = getContent(); const label = CATEGORY_SLUGS[category as CategorySlug];
-  const all = await getEntries(); const entries = label === "All" ? all : all.filter((e) => e.category === label);
+  const all = await getEntries(); const entries = all.filter((e) => e.category === label);
   return (
     <>
       <section className="container-x pb-8 pt-28 md:pb-12">

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GridDrift } from "@/components/canvas/GridDrift";
-import { Img } from "@/components/media/Img";
 import { NewsletterForm } from "./NewsletterForm";
 import { WorldClock } from "./WorldClock";
 import type { SiteContent } from "@/content/types";
@@ -9,8 +8,6 @@ export function Footer({ c }: { c: SiteContent }) {
   const year = new Date().getFullYear();
   return (
     <footer className="relative isolate overflow-hidden bg-black text-white">
-      <div className="absolute inset-0 -z-20"><Img assetId="footer-background" alt="" tone="dark" sizes="100vw" /></div>
-      <div className="absolute inset-0 -z-10 bg-black/60" aria-hidden />
       <GridDrift className="-z-10" />
       <div className="container-x flex min-h-[640px] flex-col justify-between gap-24 pb-8 pt-24">
         <div className="grid gap-12 md:grid-cols-[1fr_1fr_1.4fr]">

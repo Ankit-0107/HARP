@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
     <article>
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />}
       <header className="container-x pb-8 pt-28 md:pb-12">
-        <Link href="/newsroom/filters/all" className="mb-8 inline-flex items-center gap-2 font-mono text-[12px] uppercase hover:opacity-60"><ArrowLeft /> Workshops</Link>
+        <Link href="/newsroom/filters/completed" className="mb-8 inline-flex items-center gap-2 font-mono text-[12px] uppercase hover:opacity-60"><ArrowLeft /> Workshops</Link>
         <p className="mb-5 font-mono text-[12px] uppercase"><span className="rounded-full border border-black/15 px-3 py-1.5">{e.category}</span></p>
         <h1 className="h-section max-w-[18ch] text-balance text-[clamp(2.5rem,6.2vw,6rem)]"><SplitText text={e.title} by="words" trigger="mount" delay={0.2} /></h1>
       </header>

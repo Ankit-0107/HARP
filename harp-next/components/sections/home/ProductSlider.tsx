@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Img } from "@/components/media/Img";
-import { PixelButton } from "@/components/ui/PixelButton";
 import type { Slide } from "@/content/types";
 import { ease } from "@/lib/motion";
 import { cn } from "@/lib/cn";
@@ -26,7 +25,6 @@ export function ProductSlider({ slides }: { slides: Slide[] }) {
             <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-5 p-6 pb-14 md:p-10 md:pb-16">
               <h2 className="text-[clamp(2rem,3.4vw,3rem)] font-medium leading-[1.2] tracking-[-0.04em]">{s.title}</h2>
               <p className="max-w-[44ch] text-[15px] leading-[1.45] text-white/75">{s.body}</p>
-              {s.href && <PixelButton href={s.href} variant="light">Learn More</PixelButton>}
             </div>
           </motion.div>
         </AnimatePresence>

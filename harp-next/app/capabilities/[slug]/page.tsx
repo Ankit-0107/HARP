@@ -30,7 +30,7 @@ export default async function CapabilityPage({ params }: { params: Promise<Param
   return (
     <>
       <section className="container-x pb-10 pt-28 md:pb-16">
-        <p className="eyebrow mb-4">{item.index} — {item.tag}</p>
+        <p className="eyebrow mb-4">{item.tag && item.tag !== "TBD" ? `${item.index} — ${item.tag}` : item.index}</p>
         <h1 className="h-display text-[clamp(2.75rem,8vw,8rem)] font-light"><SplitText text={d.title} trigger="mount" delay={0.2} stagger={0.035} /></h1>
         {d.status === "published" && <Reveal delay={0.5}><p className="mt-8 max-w-[44ch] text-[19px] leading-[1.3]">{d.intro}</p></Reveal>}
       </section>
@@ -87,7 +87,7 @@ export default async function CapabilityPage({ params }: { params: Promise<Param
       <nav aria-label="Other products" className="container-x py-10">
         <p className="eyebrow mb-4">More products</p>
         <ul className="grid gap-1 md:grid-cols-3">
-          {others.map((o) => (<li key={o.slug}><Link href={`/capabilities/${o.slug}`} className="group flex items-center justify-between rounded-sm bg-surface p-5 hover:bg-surface-2"><span><span className="block font-mono text-[11px] text-mute">{o.index} — {o.tag}</span><span className="mt-2 block text-[17px] font-medium tracking-[-0.02em]">{o.title}</span></span><ArrowRight className="size-5 transition-transform duration-500 ease-expo group-hover:translate-x-1" /></Link></li>))}
+          {others.map((o) => (<li key={o.slug}><Link href={`/capabilities/${o.slug}`} className="group flex items-center justify-between rounded-sm bg-surface p-5 hover:bg-surface-2"><span><span className="block font-mono text-[11px] text-mute">{o.tag && o.tag !== "TBD" ? `${o.index} — ${o.tag}` : o.index}</span><span className="mt-2 block text-[17px] font-medium tracking-[-0.02em]">{o.title}</span></span><ArrowRight className="size-5 transition-transform duration-500 ease-expo group-hover:translate-x-1" /></Link></li>))}
         </ul>
       </nav>
       <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />

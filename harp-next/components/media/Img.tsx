@@ -2,7 +2,7 @@ import Image from "next/image";
 import { resolveMedia } from "@/lib/assets";
 import { cn } from "@/lib/cn";
 
-interface Props { assetId?: string; src?: string; alt: string; className?: string; sizes?: string; priority?: boolean; tone?: "light" | "dark" }
+interface Props { assetId?: string; src?: string; alt: string; className?: string; sizes?: string; priority?: boolean; tone?: "light" | "dark"; showLabel?: boolean }
 
 /**
  * Renders a manifest image SLOT or direct image src. Works in server and client components.
@@ -10,7 +10,7 @@ interface Props { assetId?: string; src?: string; alt: string; className?: strin
  *  • otherwise            → an EXPLICIT placeholder naming the slot (never a silent stand-in)
  * The parent must be `relative` and sized.
  */
-export function Img({ assetId, src: directSrc, alt, className, sizes = "100vw", priority, tone = "light" }: Props) {
+export function Img({ assetId, src: directSrc, alt, className, sizes = "100vw", priority, tone = "light", showLabel = false }: Props) {
   if (directSrc) {
     return <Image src={directSrc} alt={alt} fill sizes={sizes} priority={priority} className={cn("object-cover", className)} />;
   }
@@ -18,18 +18,20 @@ export function Img({ assetId, src: directSrc, alt, className, sizes = "100vw", 
   if (resolved.src) {
     return <Image src={resolved.src} alt={alt} fill sizes={sizes} priority={priority} className={cn("object-cover", className)} data-asset-id={assetId} data-asset-status="available" />;
   }
-  return <AssetPlaceholder assetId={assetId ?? "unspecified"} alt={alt} className={className} tone={tone} mode={resolved.mode} />;
+  return <AssetPlaceholder assetId={assetId ?? "unspecified"} alt={alt} className={className} tone={tone} mode={resolved.mode} showLabel={showLabel} />;
 }
 
-export function AssetPlaceholder({ assetId, alt, className, tone = "light", mode }: Omit<Props, "sizes" | "priority"> & { mode: "reference" | "harp" }) {
+export function AssetPlaceholder({ assetId, alt, className, tone = "light", mode, showLabel = false }: Omit<Props, "sizes" | "priority"> & { mode: "reference" | "harp" }) {
   const dark = tone === "dark";
   return (
     <div role="img" aria-label={`${alt} (image not yet available)`} data-asset-id={assetId} data-asset-status="missing"
       className={cn("@container absolute inset-0 flex items-end overflow-hidden p-3", dark ? "bg-[#161616] text-white/50" : "bg-surface-2 text-black/45", className)}
       style={{ backgroundImage: `repeating-linear-gradient(135deg, ${dark ? "rgba(255,255,255,.05)" : "rgba(0,0,0,.05)"} 0 1px, transparent 1px 14px)` }}>
-      <span className="hidden font-mono text-[10px] uppercase leading-tight tracking-wide @min-[140px]:block">
-        {mode === "harp" ? "HARP image slot — [TBD]" : "Original image unavailable"}<br />{assetId}
-      </span>
+      {showLabel && (
+        <span className="hidden font-mono text-[10px] uppercase leading-tight tracking-wide @min-[140px]:block">
+          {mode === "harp" ? "HARP image slot — [TBD]" : "Original image unavailable"}<br />{assetId}
+        </span>
+      )}
     </div>
   );
 }

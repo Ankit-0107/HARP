@@ -37,7 +37,7 @@ export const harp: SiteContent = {
   home: {
     hero: { lines: ["HARP", "ROBOTICS"], meta: [{ label: "Made in:", value: "India" }, { label: "Facilities:", value: "Advanced Manufacturing" }, { label: "Deployed:", value: "Industrial Environments" }, { label: "Operating:", value: "Robotics & Automation" }] },
     about: { title: "About Us", columns: [{ heading: "What we are", body: ("HARP Robotics is building the next generation of hybrid robotics, exploring the intersection of aerial mobility, ground movement and intelligent engineering.") }, { heading: "Why it matters", body: ("We believe robotics should move beyond conventional boundaries. By bringing different modes of movement together, we aim to explore new possibilities in how machines interact with and navigate the world.") }], cta: { label: "Learn More", href: "/about" } },
-    slider: n(4).map((i) => ({ title: t(`Slide ${i} title`), body: t(`Slide ${i} description`), href: i === 1 ? "/capabilities/precision-machining" : undefined, assetId: slotImages.home.slider[i - 1]!.assetId, placeholder: true })),
+    slider: n(4).map((i) => ({ title: t(`Slide ${i} title`), body: t(`Slide ${i} description`), href: undefined, assetId: slotImages.home.slider[i - 1]!.assetId, placeholder: true })),
     industries: n(5).map((i) => ({ title: t(`Industry ${i}`), body: t(`Industry ${i} description`), assetId: slotImages.home.industries[i - 1]!.assetId, placeholder: true })),
     process: { label: "Process steps", steps: n(5).map((i) => ({ title: t(`Step ${i}`), body: t(`Step ${i} description`) })) },
     stats: { eyebrow: "stats", title: "By the Numbers", items: ["RELIABILITY", "THROUGHPUT", "SCALE", "REACH"].map((tag) => ({ value: null, label: t(`${tag.toLowerCase()} metric label`), tag, body: t(`${tag.toLowerCase()} explanation (requires verified figure)`) })) },
@@ -53,8 +53,8 @@ export const harp: SiteContent = {
     contact: { eyebrow: "Contact", title: "Contact", body: t("contact invitation"), channels: ["General", "Media", "Investor Relations"].map((label) => ({ label, email: "" })) },
   },
   capabilities: {
-    intro: t("products introduction"), eyebrow: t("eyebrow"), title: "Our Products",
-    items: slotImages.capabilities.items.map((c, i) => ({ ...c, tag: "TBD", title: t(`Capability ${i + 1}`) })),
+    intro: "", eyebrow: "", title: "Our Products",
+    items: slotImages.capabilities.items.map((c, i) => ({ ...c, tag: "", title: t(`Capability ${i + 1}`) })),
     industries: { eyebrow: t("list heading"), title: "Industries", body: t("industries introduction"), list: n(6).map((i) => ({ name: t(`Industry ${i}`), items: [t("Application"), t("Application"), t("Application")] })) },
   },
   capabilityDetails: Object.fromEntries(slotImages.capabilities.items.map((c, i) => [c.slug!, {
@@ -73,7 +73,7 @@ export const harp: SiteContent = {
     hq: { label: "HQ", lines: [t("Street address"), t("City, region, postcode")] },
   },
   newsroom: {
-    eyebrow: "Categories", title: "Workshops", categories: ["All", "Case Study", "Article"], latestLabel: "Recent Workshops",
+    eyebrow: "Categories", title: "Workshops", categories: ["Completed", "Ongoing", "Upcoming"], latestLabel: "Recent Workshops",
     bodyPlaceholder: "This story has not been written yet. The page layout is in place; the article body is pending.",
     // Placeholder entries keep the 8 documented URLs. Real HARP stories: add MDX files to content/newsroom/harp/ (same slug overrides the placeholder).
     entries: reference.newsroom.entries.map((e, i): NewsEntry => {

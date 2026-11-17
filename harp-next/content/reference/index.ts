@@ -24,7 +24,7 @@ export const reference: SiteContent = {
   nav: {
     links: [
       { label: "Home", href: "/" }, { label: "About", href: "/about" }, { label: "Products", href: "/capabilities" },
-      { label: "Workshops", href: "/newsroom/filters/all" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" },
+      { label: "Workshops", href: "/newsroom/filters/completed" }, { label: "Careers", href: "/careers" }, { label: "Contact", href: "/contact" },
     ],
     socials: [
       { label: "Instagram", href: "https://instagram.com", external: true }, { label: "Facebook", href: "https://facebook.com", external: true },
@@ -167,17 +167,17 @@ export const reference: SiteContent = {
     hq: { label: "HQ", lines: ["1 Bush Terminal,", "Building 21, Brooklyn,", "NY 11232"] },
   },
   newsroom: {
-    eyebrow: "Categories", title: "Workshops", categories: ["All", "Case Study", "Article"], latestLabel: "Recent Workshops",
+    eyebrow: "Categories", title: "Workshops", categories: ["Completed", "Ongoing", "Upcoming"], latestLabel: "Recent Workshops",
     bodyPlaceholder: "This story has not been written yet. The page layout is in place; the article body is pending.",
     entries: [
-      { slug: "automation-should-fit-your-line", title: "Automation Should Fit Your Line, Not Replace It", category: "Article", date: "2025-08-12", author: "Sarah Collins", heroAssetId: "news-automation-fit-line", authorAssetId: "team-daniel-hartley", status: "published" },
-      { slug: "axlon-two-platforms-one-line", title: "How Axlon Brought Two Platforms Onto One Line", category: "Case Study", date: "2026-03-10", author: "Sarah Collins", heroAssetId: "hero-poster", authorAssetId: "team-mara-lindqvist", status: "published" },
-      { slug: "aerix-every-part-inspection", title: "Every-Part Inspection, Built Into the Line at Aerix", category: "Case Study", date: "2026-02-18", author: "David Reyes", heroAssetId: "capability-automated-inspection", authorAssetId: "article-author-photo-aerix", status: "published" },
-      { slug: "cargon-automated-floor-peak", title: "How Cargon Automated Its Floor Before Peak Season", category: "Case Study", date: "2026-01-22", heroAssetId: "news-card-cargon", status: "placeholder" },
-      { slug: "voltan-robotic-field-inspection", title: "Taking People Off the Turbine at Voltan", category: "Case Study", date: "2025-12-05", heroAssetId: "news-card-voltan", status: "placeholder" },
-      { slug: "why-we-build-our-own-lines", title: "Why We Build Our Own Lines", category: "Article", date: "2025-11-14", heroAssetId: "timeline-2017", status: "placeholder" },
-      { slug: "reshoring-only-works-if-you-automate", title: "Reshoring Only Works If You Automate", category: "Article", date: "2025-10-09", heroAssetId: "news-card-reshoring", status: "placeholder" },
-      { slug: "repeatable-to-the-millimeter", title: "What \"Repeatable to the Millimeter\" Actually Means", category: "Article", date: "2025-09-03", heroAssetId: "timeline-2024", status: "placeholder" },
+      { slug: "automation-should-fit-your-line", title: "Automation Should Fit Your Line, Not Replace It", category: "Completed", date: "2025-08-12", author: "Sarah Collins", heroAssetId: "news-automation-fit-line", authorAssetId: "team-daniel-hartley", status: "published" },
+      { slug: "axlon-two-platforms-one-line", title: "How Axlon Brought Two Platforms Onto One Line", category: "Ongoing", date: "2026-03-10", author: "Sarah Collins", heroAssetId: "hero-poster", authorAssetId: "team-mara-lindqvist", status: "published" },
+      { slug: "aerix-every-part-inspection", title: "Every-Part Inspection, Built Into the Line at Aerix", category: "Upcoming", date: "2026-02-18", author: "David Reyes", heroAssetId: "capability-automated-inspection", authorAssetId: "article-author-photo-aerix", status: "published" },
+      { slug: "cargon-automated-floor-peak", title: "How Cargon Automated Its Floor Before Peak Season", category: "Completed", date: "2026-01-22", heroAssetId: "news-card-cargon", status: "placeholder" },
+      { slug: "voltan-robotic-field-inspection", title: "Taking People Off the Turbine at Voltan", category: "Ongoing", date: "2025-12-05", heroAssetId: "news-card-voltan", status: "placeholder" },
+      { slug: "why-we-build-our-own-lines", title: "Why We Build Our Own Lines", category: "Upcoming", date: "2025-11-14", heroAssetId: "timeline-2017", status: "placeholder" },
+      { slug: "reshoring-only-works-if-you-automate", title: "Reshoring Only Works If You Automate", category: "Completed", date: "2025-10-09", heroAssetId: "news-card-reshoring", status: "placeholder" },
+      { slug: "repeatable-to-the-millimeter", title: "What \"Repeatable to the Millimeter\" Actually Means", category: "Ongoing", date: "2025-09-03", heroAssetId: "timeline-2024", status: "placeholder" },
     ],
   },
   privacy: {

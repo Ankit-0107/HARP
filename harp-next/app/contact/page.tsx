@@ -1,6 +1,5 @@
 import { getContent } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
-import { PreFooterCta } from "@/components/layout/PreFooterCta";
 import { Img } from "@/components/media/Img";
 import { ContactForm } from "@/components/sections/contact/ContactForm";
 import { ArrowRight } from "@/components/ui/Icons";
@@ -42,7 +41,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />
     </>
   );
 }

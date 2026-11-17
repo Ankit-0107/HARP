@@ -18,7 +18,7 @@ export interface Capability { index: string; tag: string; title: string; slug?: 
 export interface Industry { name: string; items: string[] }
 export interface Job { title: string; meta: [string, string] }
 export interface NewsEntry {
-  slug: string; title: string; category: "Article" | "Case Study";
+  slug: string; title: string; category: "Completed" | "Ongoing" | "Upcoming";
   date: string | null; // ISO yyyy-mm-dd
   author?: string; authorAssetId?: string; heroAssetId: string;
   /** "published" = real body (MDX); "placeholder" = designed placeholder page, no invented body */

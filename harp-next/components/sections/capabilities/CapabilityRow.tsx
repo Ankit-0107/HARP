@@ -13,7 +13,7 @@ export function CapabilityRow({ item }: { item: Capability }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
       <div className="container-x absolute inset-x-0 bottom-0 flex items-end justify-between pb-6 md:pb-8">
         <div>
-          <RevealMask className="mb-2"><p className="font-mono text-[11px] uppercase text-white/70">{item.index} — {item.tag}</p></RevealMask>
+          <RevealMask className="mb-2"><p className="font-mono text-[11px] uppercase text-white/70">{item.tag && item.tag !== "TBD" ? `${item.index} — ${item.tag}` : item.index}</p></RevealMask>
           <h2 className="text-[clamp(1.5rem,2.2vw,2rem)] font-medium tracking-[-0.04em]"><SplitText text={item.title} by="words" /></h2>
         </div>
         <ArrowUpRight className="size-6 -translate-x-2 translate-y-2 opacity-0 transition-all duration-500 ease-expo group-hover:[@media(hover:hover)]:translate-x-0 group-hover:[@media(hover:hover)]:translate-y-0 group-hover:[@media(hover:hover)]:opacity-100" />

@@ -228,8 +228,8 @@ export function resolveNavIcon(href: string, label: string) {
 export const DEFAULT_DYNAMIC_ISLAND_ITEMS: DynamicIslandItem[] = [
   { id: "home", label: "Home", href: "/", icon: HomeIcon },
   { id: "capabilities", label: "Products", href: "/capabilities", icon: WorkIcon },
+  { id: "newsroom", label: "Workshops", href: "/newsroom/filters/completed", icon: JournalIcon },
   { id: "careers", label: "Careers", href: "/careers", icon: LabIcon },
-  { id: "newsroom", label: "Workshops", href: "/newsroom/filters/all", icon: JournalIcon },
   { id: "about", label: "About", href: "/about", icon: AboutIcon },
   { id: "contact", label: "Contact", href: "/contact", icon: ContactIcon },
 ];
@@ -270,14 +270,15 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
       }));
 
       // Symmetrical ordering around center logo:
-      // Left: Home, Capabilities, Careers
-      // Right: Newsroom, About, Contact
+      // Left: Home, Products, Workshops
+      // Right: Careers, About, Contact
       const orderMap: Record<string, number> = {
         "/": 1,
         "/capabilities": 2,
-        "/careers": 3,
-        "/newsroom/filters/all": 4,
-        "/newsroom": 4,
+        "/newsroom/filters/completed": 3,
+        "/newsroom/filters/all": 3,
+        "/newsroom": 3,
+        "/careers": 4,
         "/about": 5,
         "/contact": 6,
       };
