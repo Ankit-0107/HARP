@@ -19,7 +19,7 @@ export function HeroVideo({ videoId, posterId, className }: { videoId: string; p
       return;
     }
     const io = new IntersectionObserver(([e]) => {
-      if (e?.isIntersecting) void v.play().catch(() => {});
+      if (e?.isIntersecting) void v.play().catch(() => { });
       else v.pause();
     });
     io.observe(v);

@@ -11,7 +11,7 @@ import {
   HomeIcon,
   WorkIcon,
   LabIcon,
-  JournalIcon,
+  WorkshopIcon,
   AboutIcon,
   ContactIcon,
 } from "./DynamicIslandNav";
@@ -31,9 +31,9 @@ const ROW_STAGGER_MS = 0.04;
 function MobileNavIcon({ href, label, isActive }: { href: string; label: string; isActive?: boolean }) {
   const norm = `${label} ${href}`.toLowerCase();
   if (href === "/" || norm.includes("home")) return <HomeIcon isActive={isActive} />;
+  if (norm.includes("workshop") || norm.includes("news") || norm.includes("journal")) return <WorkshopIcon isActive={isActive} />;
   if (norm.includes("product") || norm.includes("capabilit") || norm.includes("work")) return <WorkIcon isActive={isActive} />;
   if (norm.includes("career") || norm.includes("lab")) return <LabIcon isActive={isActive} />;
-  if (norm.includes("workshop") || norm.includes("news") || norm.includes("journal")) return <JournalIcon isActive={isActive} />;
   if (norm.includes("about")) return <AboutIcon isActive={isActive} />;
   if (norm.includes("contact")) return <ContactIcon isActive={isActive} />;
   return <WorkIcon isActive={isActive} />;
@@ -142,19 +142,19 @@ export function SiteNav({ wordmark, links, socials }: Props) {
           layout
           transition={MOBILE_SPRING}
           aria-label="Main"
-          className="pointer-events-auto relative w-full max-w-[400px] rounded-[26px] bg-[#101013]/90 border border-white/[0.08] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.18),0px_14px_34px_-12px_rgba(0,0,0,0.55),inset_0_1px_0_0_rgba(255,255,255,0.07)] backdrop-blur-[20px] backdrop-saturate-[170%]"
+          className="pointer-events-auto relative w-full max-w-[420px] rounded-[30px] bg-[#101013]/90 border border-white/[0.08] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.18),0px_14px_34px_-12px_rgba(0,0,0,0.55),inset_0_1px_0_0_rgba(255,255,255,0.07)] backdrop-blur-[20px] backdrop-saturate-[170%]"
         >
           {/* ── Top bar: active item + HARP logo + hamburger ── */}
-          <div className="flex h-[52px] items-center px-1.5">
+          <div className="flex h-[58px] items-center px-2">
             {/* Current page icon + label */}
             <Link
               href={currentLink?.href ?? "/"}
-              className="relative z-10 flex h-10 items-center rounded-[20px] bg-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.09)] text-white select-none"
+              className="relative z-10 flex h-[44px] items-center rounded-[22px] bg-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.09)] text-white select-none"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center">
+              <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center">
                 <MobileNavIcon href={currentLink?.href ?? "/"} label={currentLink?.label ?? "Home"} isActive />
               </span>
-              <span className="pr-3.5 -ml-1 text-[14px] font-medium tracking-[-0.01em] whitespace-nowrap">
+              <span className="pr-4 -ml-0.5 text-[15px] font-medium tracking-[-0.01em] whitespace-nowrap">
                 {currentLink?.label ?? "Home"}
               </span>
             </Link>
@@ -166,14 +166,14 @@ export function SiteNav({ wordmark, links, socials }: Props) {
             <Link
               href="/"
               aria-label="HARP Home"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[20px] transition-transform duration-200 active:scale-[0.88]"
+              className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[22px] transition-transform duration-200 active:scale-[0.88]"
             >
               <Image
                 src="/assets/harp/loading.png"
                 alt="HARP"
-                width={20}
-                height={20}
-                className="h-4 w-auto object-contain opacity-80"
+                width={22}
+                height={22}
+                className="h-[18px] w-auto object-contain opacity-80"
                 priority
               />
             </Link>
@@ -188,7 +188,7 @@ export function SiteNav({ wordmark, links, socials }: Props) {
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
-              className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-[20px] text-white outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              className="relative flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[22px] text-white outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               {/* Animated hamburger bars → X */}
               <span aria-hidden className="relative block h-[16px] w-[16px]">

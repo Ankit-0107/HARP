@@ -27,14 +27,22 @@ export function Footer({ c }: { c: SiteContent }) {
           </div>
         </div>
 
-        {/* ── Giant brand wordmark ── */}
+        {/* ── Giant brand wordmark ──
+            Container-query sizing: the <div> below is a CSS inline-size
+            container, so `cqw` units are relative to *this* element's width
+            rather than the viewport. Font advance for "HARP ROBOTICS" in the
+            Skywall font = 3.227× the em size (measured from OTF hmtx table),
+            so 100 ÷ 3.227 ≈ 30.98 cqw would hit exactly 100% width.
+            We use 30.5 cqw to leave a hair of breathing room, clamped so
+            it stays legible on tiny screens and doesn't explode on 4K. */}
         <div
           className="pointer-events-none select-none overflow-hidden -translate-y-18 -mb-40"
           aria-hidden
+          style={{ containerType: "inline-size" }}
         >
           <p
             className="whitespace-nowrap text-center font-[family-name:var(--font-skywall)] font-normal uppercase leading-[0.82] tracking-[-0.002em] text-white"
-            style={{ fontSize: "clamp(5rem, 30vw, 28rem)" }}
+            style={{ fontSize: "clamp(3.5rem, 30.5cqw, 36rem)" }}
           >
             HARP ROBOTICS
           </p>

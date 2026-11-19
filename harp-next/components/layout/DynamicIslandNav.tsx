@@ -17,16 +17,16 @@ interface IconProps {
   isActive?: boolean;
 }
 
-export function HomeIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export function HomeIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -40,16 +40,16 @@ export function HomeIcon({ className = "w-5 h-5", isActive = false }: IconProps)
   );
 }
 
-export function WorkIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export function WorkIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -97,16 +97,16 @@ export function WorkIcon({ className = "w-5 h-5", isActive = false }: IconProps)
   );
 }
 
-export function LabIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export function LabIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -120,40 +120,41 @@ export function LabIcon({ className = "w-5 h-5", isActive = false }: IconProps) 
   );
 }
 
-export function JournalIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export function WorkshopIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path
-        d="M14.5 5.5 18.5 9.5 9.5 18.5H5.5V14.5z"
+        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
         fill="currentColor"
         fillOpacity={isActive ? 0.2 : 0}
         className="transition-[fill-opacity] duration-300"
       />
-      <path d="m12.5 7.5 4 4" />
     </svg>
   );
 }
 
-export function AboutIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export const JournalIcon = WorkshopIcon;
+
+export function AboutIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -175,16 +176,16 @@ export function AboutIcon({ className = "w-5 h-5", isActive = false }: IconProps
   );
 }
 
-export function ContactIcon({ className = "w-5 h-5", isActive = false }: IconProps) {
+export function ContactIcon({ className = "w-[22px] h-[22px]", isActive = false }: IconProps) {
   return (
     <svg
       aria-hidden="true"
       focusable="false"
       viewBox="0 0 24 24"
-      className={cn("w-5 h-5 overflow-visible", className)}
+      className={cn("w-[22px] h-[22px] overflow-visible", className)}
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.85}
+      strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -217,9 +218,9 @@ export interface DynamicIslandItem {
 export function resolveNavIcon(href: string, label: string) {
   const norm = `${label} ${href}`.toLowerCase();
   if (href === "/" || norm.includes("home")) return HomeIcon;
+  if (norm.includes("workshop") || norm.includes("news") || norm.includes("journal")) return WorkshopIcon;
   if (norm.includes("product") || norm.includes("capabilit") || norm.includes("work")) return WorkIcon;
   if (norm.includes("career") || norm.includes("lab")) return LabIcon;
-  if (norm.includes("workshop") || norm.includes("news") || norm.includes("journal")) return JournalIcon;
   if (norm.includes("about")) return AboutIcon;
   if (norm.includes("contact")) return ContactIcon;
   return WorkIcon;
@@ -228,7 +229,7 @@ export function resolveNavIcon(href: string, label: string) {
 export const DEFAULT_DYNAMIC_ISLAND_ITEMS: DynamicIslandItem[] = [
   { id: "home", label: "Home", href: "/", icon: HomeIcon },
   { id: "capabilities", label: "Products", href: "/capabilities", icon: WorkIcon },
-  { id: "newsroom", label: "Workshops", href: "/newsroom/filters/completed", icon: JournalIcon },
+  { id: "newsroom", label: "Workshops", href: "/newsroom/filters/completed", icon: WorkshopIcon },
   { id: "careers", label: "Careers", href: "/careers", icon: LabIcon },
   { id: "about", label: "About", href: "/about", icon: AboutIcon },
   { id: "contact", label: "Contact", href: "/contact", icon: ContactIcon },
@@ -325,7 +326,7 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
           <motion.div
             layoutId="dynamic-island-active-pill"
             transition={SPRING_TRANSITION}
-            className="absolute inset-0 rounded-[20px] bg-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.09)] pointer-events-none"
+            className="absolute inset-0 rounded-[24px] bg-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.09)] pointer-events-none"
           />
         )}
 
@@ -336,12 +337,12 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
           onFocus={() => setHoveredId(item.id)}
           onBlur={() => setHoveredId(null)}
           className={cn(
-            "relative z-10 flex h-10 items-center rounded-[20px] outline-none select-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white/80",
+            "relative z-10 flex h-[48px] items-center rounded-[24px] outline-none select-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white/80",
             isExpanded ? "text-white" : "text-white/56 hover:text-white"
           )}
         >
           {/* Icon box */}
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-150 active:scale-[0.88]">
+          <span className="flex h-[48px] w-[48px] shrink-0 items-center justify-center transition-transform duration-150 active:scale-[0.88]">
             <Icon isActive={isActive} />
           </span>
 
@@ -357,7 +358,7 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
                   opacity: { duration: 0.16, ease: "easeOut" },
                   x: SPRING_TRANSITION,
                 }}
-                className="overflow-hidden whitespace-nowrap pr-3.5 -ml-1 text-[14px] font-medium tracking-[-0.01em] text-white"
+                className="overflow-hidden whitespace-nowrap pr-4 -ml-0.5 text-[15px] font-medium tracking-[-0.01em] text-white"
               >
                 {item.label}
               </motion.span>
@@ -373,7 +374,7 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
   return (
     <header
       className={cn(
-        "pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center p-4",
+        "pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center p-4 md:p-5",
         className
       )}
     >
@@ -382,29 +383,29 @@ export function DynamicIslandNav({ items: propItems, links, className }: Dynamic
         transition={SPRING_TRANSITION}
         aria-label="Main"
         onMouseLeave={() => setHoveredId(null)}
-        className="pointer-events-auto relative flex h-[52px] items-center rounded-[26px] bg-[#101013]/90 p-[6px] backdrop-blur-[20px] backdrop-saturate-[170%] border border-white/[0.08] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.18),0px_14px_34px_-12px_rgba(0,0,0,0.55),inset_0_1px_0_0_rgba(255,255,255,0.07)]"
+        className="pointer-events-auto relative flex h-[62px] items-center rounded-[31px] bg-[#101013]/90 p-[7px] backdrop-blur-[20px] backdrop-saturate-[170%] border border-white/[0.08] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.22),0px_16px_38px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.08)]"
       >
-        <ul className="flex items-center gap-1 m-0 p-0 list-none">
+        <ul className="flex items-center gap-1.5 m-0 p-0 list-none">
           {leftItems.map(renderNavItem)}
 
           {/* Center Brand Emblem (HARP Logo) */}
           <li className="relative flex items-center shrink-0 mx-0.5">
-            <span className="h-4 w-[1px] bg-white/[0.08] rounded-full mr-1.5" aria-hidden="true" />
+            <span className="h-5 w-[1px] bg-white/[0.1] rounded-full mr-2" aria-hidden="true" />
             <Link
               href="/"
               aria-label="HARP Home"
-              className="group relative flex h-10 w-10 items-center justify-center rounded-[20px] outline-none transition-transform duration-200 hover:scale-110 active:scale-[0.88] focus-visible:ring-2 focus-visible:ring-white/80"
+              className="group relative flex h-[48px] w-[48px] items-center justify-center rounded-[24px] outline-none transition-transform duration-200 hover:scale-110 active:scale-[0.88] focus-visible:ring-2 focus-visible:ring-white/80"
             >
               <Image
                 src="/assets/harp/loading.png"
                 alt="HARP Robotics"
-                width={24}
-                height={24}
-                className="h-5 w-auto object-contain opacity-90 transition-all duration-200 group-hover:opacity-100 group-hover:brightness-125"
+                width={26}
+                height={26}
+                className="h-6 w-auto object-contain opacity-90 transition-all duration-200 group-hover:opacity-100 group-hover:brightness-125"
                 priority
               />
             </Link>
-            <span className="h-4 w-[1px] bg-white/[0.08] rounded-full ml-1.5" aria-hidden="true" />
+            <span className="h-5 w-[1px] bg-white/[0.1] rounded-full ml-2" aria-hidden="true" />
           </li>
 
           {rightItems.map(renderNavItem)}
