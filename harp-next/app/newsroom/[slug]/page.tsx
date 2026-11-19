@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
     <article>
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />}
       <header className="container-x pb-8 pt-28 md:pb-12">
-        <Link href="/newsroom/filters/all" className="mb-8 inline-flex items-center gap-2 font-mono text-[12px] uppercase hover:opacity-60"><ArrowLeft /> Newsroom</Link>
+        <Link href="/newsroom/filters/completed" className="mb-8 inline-flex items-center gap-2 font-mono text-[12px] uppercase hover:opacity-60"><ArrowLeft /> Workshops</Link>
         <p className="mb-5 font-mono text-[12px] uppercase"><span className="rounded-full border border-black/15 px-3 py-1.5">{e.category}</span></p>
         <h1 className="h-section max-w-[18ch] text-balance text-[clamp(2.5rem,6.2vw,6rem)]"><SplitText text={e.title} by="words" trigger="mount" delay={0.2} /></h1>
       </header>
@@ -72,7 +72,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
       </div>
 
       <section className="container-x py-12 md:py-20" aria-labelledby="more-news">
-        <h2 id="more-news" className="eyebrow mb-8">More from the newsroom</h2>
+        <h2 id="more-news" className="eyebrow mb-8">More from workshops</h2>
         <ul className="grid gap-x-5 gap-y-10 md:grid-cols-3">{related.map((r) => <li key={r.slug}><NewsCard entry={r} /></li>)}</ul>
       </section>
       <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />

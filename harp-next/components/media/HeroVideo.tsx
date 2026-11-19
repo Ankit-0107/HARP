@@ -19,7 +19,7 @@ export function HeroVideo({ videoId, posterId, className }: { videoId: string; p
       return;
     }
     const io = new IntersectionObserver(([e]) => {
-      if (e?.isIntersecting) void v.play().catch(() => {});
+      if (e?.isIntersecting) void v.play().catch(() => { });
       else v.pause();
     });
     io.observe(v);
@@ -65,9 +65,6 @@ export function HeroVideo({ videoId, posterId, className }: { videoId: string; p
       {!hasVideo && (
         <div className="absolute inset-0">
           <Img assetId={posterId ?? videoId} alt="" tone="dark" priority />
-          <p className="absolute left-3 top-24 font-mono text-[10px] uppercase text-white/50">
-            {video.mode === "harp" ? "HARP hero video slot — [TBD]" : "Original hero video unavailable"} · {videoId}
-          </p>
         </div>
       )}
     </div>

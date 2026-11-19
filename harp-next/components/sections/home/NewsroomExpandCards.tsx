@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { resolveMedia } from "@/lib/assets";
 import { AssetPlaceholder } from "@/components/media/Img";
-import { formatDate } from "@/lib/format";
 import { ArrowUpRight } from "@/components/ui/Icons";
 import { SplitText } from "@/components/ui/SplitText";
 import type { NewsEntry } from "@/content/types";
@@ -35,15 +34,24 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const DURATION = 0.64;
 
 const EXPAND_TRANSITION = { duration: DURATION, ease: EASE } as const;
-const DESC_TRANSITION = { duration: 0.42, ease: EASE, delay: DURATION * 0.53 } as const;
-const CTA_TRANSITION = { duration: 0.48, ease: EASE, delay: DURATION * 0.65 } as const;
+const CTA_TRANSITION = { duration: 0.48, ease: EASE, delay: DURATION * 0.45 } as const;
+
+const CARD_IMAGES: Record<string, string> = {
+  Products: "/assets/harp/Products.webp",
+  Workshops: "/assets/harp/Workshops.webp",
+  "3D Printing": "/assets/harp/3D_Printing_Services.webp",
+};
 
 function CardImage({ entry, sizes }: { entry: NewsEntry; sizes: string }) {
+  const customSrc = CARD_IMAGES[entry.title];
+  const directSrc = entry.heroAssetId?.startsWith("/") ? entry.heroAssetId : null;
   const { src, mode } = resolveMedia(entry.heroAssetId);
-  if (src) {
+  const finalSrc = customSrc ?? directSrc ?? src;
+
+  if (finalSrc) {
     return (
       <Image
-        src={src}
+        src={finalSrc}
         alt={entry.title}
         fill
         sizes={sizes}
@@ -54,6 +62,8 @@ function CardImage({ entry, sizes }: { entry: NewsEntry; sizes: string }) {
   }
   return <AssetPlaceholder assetId={entry.heroAssetId} alt={entry.title} tone="dark" mode={mode} />;
 }
+
+const CARD_LINKS = ["/capabilities", "/newsroom", "/404"];
 
 /** Circular + / × indicator icon */
 function IndicatorIcon({ isActive }: { isActive: boolean }) {
@@ -74,22 +84,19 @@ function IndicatorIcon({ isActive }: { isActive: boolean }) {
   );
 }
 
-const CARD_LINKS = ["/capabilities", "/newsroom", "/404"];
-
 /* ─── Desktop Card ─── */
 function ExpandCard({
   entry,
   index,
   isActive,
   onActivate,
-  categoryLabel,
   href,
 }: {
   entry: NewsEntry;
   index: number;
   isActive: boolean;
   onActivate: () => void;
-  categoryLabel: string;
+  categoryLabel?: string;
   href: string;
 }) {
   const num = String(index + 1).padStart(2, "0");
@@ -132,7 +139,7 @@ function ExpandCard({
             className="font-mono text-[11px] font-semibold uppercase tracking-[0.065em] text-white/80"
             layout
           >
-            {isActive ? `${num} / ${categoryLabel}` : num}
+            {num}
           </motion.span>
           <IndicatorIcon isActive={isActive} />
         </div>
@@ -147,21 +154,6 @@ function ExpandCard({
           >
             {entry.title}
           </motion.h3>
-
-          {/* Description — staggered reveal */}
-          <AnimatePresence>
-            {isActive && (
-              <motion.p
-                className="mt-4 max-w-[330px] text-[14px] leading-[1.45] text-white/70"
-                initial={{ opacity: 0, y: 12, height: 0, marginTop: 0 }}
-                animate={{ opacity: 1, y: 0, height: "auto", marginTop: 16 }}
-                exit={{ opacity: 0, y: 8, height: 0, marginTop: 0 }}
-                transition={DESC_TRANSITION}
-              >
-                {formatDate(entry.date)} · {entry.category}
-              </motion.p>
-            )}
-          </AnimatePresence>
 
           {/* CTA button — staggered reveal */}
           <AnimatePresence>
@@ -198,14 +190,13 @@ function MobileCard({
   index,
   isActive,
   onActivate,
-  categoryLabel,
   href,
 }: {
   entry: NewsEntry;
   index: number;
   isActive: boolean;
   onActivate: () => void;
-  categoryLabel: string;
+  categoryLabel?: string;
   href: string;
 }) {
   const num = String(index + 1).padStart(2, "0");
@@ -239,7 +230,7 @@ function MobileCard({
         {/* Top row */}
         <div className="flex items-start justify-between">
           <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.065em] text-white/80">
-            {isActive ? `${num} / ${categoryLabel}` : num}
+            {num}
           </span>
           <IndicatorIcon isActive={isActive} />
         </div>
@@ -249,20 +240,6 @@ function MobileCard({
           <h3 className="text-[18px] font-normal leading-[1.15] tracking-[-0.02em] text-white">
             {entry.title}
           </h3>
-
-          <AnimatePresence>
-            {isActive && (
-              <motion.p
-                className="mt-3 text-[13px] leading-[1.45] text-white/60"
-                initial={{ opacity: 0, y: 8, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: "auto" }}
-                exit={{ opacity: 0, y: 6, height: 0 }}
-                transition={DESC_TRANSITION}
-              >
-                {formatDate(entry.date)} · {entry.category}
-              </motion.p>
-            )}
-          </AnimatePresence>
 
           <AnimatePresence>
             {isActive && (

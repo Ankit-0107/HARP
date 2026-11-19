@@ -1,2 +1,2 @@
 import { redirect } from "next/navigation";
-export default function NewsroomIndex() { redirect("/newsroom/filters/all"); }
+export default function NewsroomIndex() { redirect("/newsroom/filters/completed"); }

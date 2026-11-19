@@ -30,7 +30,7 @@ export default async function CapabilityPage({ params }: { params: Promise<Param
   return (
     <>
       <section className="container-x pb-10 pt-28 md:pb-16">
-        <p className="eyebrow mb-4">{item.index} — {item.tag}</p>
+        <p className="eyebrow mb-4">{item.tag && item.tag !== "TBD" ? `${item.index} — ${item.tag}` : item.index}</p>
         <h1 className="h-display text-[clamp(2.75rem,8vw,8rem)] font-light"><SplitText text={d.title} trigger="mount" delay={0.2} stagger={0.035} /></h1>
         {d.status === "published" && <Reveal delay={0.5}><p className="mt-8 max-w-[44ch] text-[19px] leading-[1.3]">{d.intro}</p></Reveal>}
       </section>
@@ -40,7 +40,7 @@ export default async function CapabilityPage({ params }: { params: Promise<Param
         <section className="container-x py-16 md:py-24" aria-labelledby="pending">
           <FramedPanel inset={8} className="px-6 py-16 md:px-[10%] md:py-24">
             <p className="eyebrow mb-5">Content pending</p>
-            <h2 id="pending" className="max-w-[22ch] text-balance text-[clamp(1.75rem,3vw,2.5rem)] font-light tracking-[-0.04em]">This capability page is a designed placeholder.</h2>
+            <h2 id="pending" className="max-w-[22ch] text-balance text-[clamp(1.75rem,3vw,2.5rem)] font-light tracking-[-0.04em]">This product page is a designed placeholder.</h2>
             <p className="mt-5 max-w-[56ch] text-[15px] leading-[1.5] text-soft">
               No description, services or technical claims have been written or verified for this page yet. The layout below shows where each block will appear once
               {c.source === "harp" ? " HARP supplies and approves the content." : " content is supplied (the original export did not include this page)."}
@@ -84,10 +84,10 @@ export default async function CapabilityPage({ params }: { params: Promise<Param
         </>
       )}
 
-      <nav aria-label="Other capabilities" className="container-x py-10">
-        <p className="eyebrow mb-4">More capabilities</p>
+      <nav aria-label="Other products" className="container-x py-10">
+        <p className="eyebrow mb-4">More products</p>
         <ul className="grid gap-1 md:grid-cols-3">
-          {others.map((o) => (<li key={o.slug}><Link href={`/capabilities/${o.slug}`} className="group flex items-center justify-between rounded-sm bg-surface p-5 hover:bg-surface-2"><span><span className="block font-mono text-[11px] text-mute">{o.index} — {o.tag}</span><span className="mt-2 block text-[17px] font-medium tracking-[-0.02em]">{o.title}</span></span><ArrowRight className="size-5 transition-transform duration-500 ease-expo group-hover:translate-x-1" /></Link></li>))}
+          {others.map((o) => (<li key={o.slug}><Link href={`/capabilities/${o.slug}`} className="group flex items-center justify-between rounded-sm bg-surface p-5 hover:bg-surface-2"><span><span className="block font-mono text-[11px] text-mute">{o.tag && o.tag !== "TBD" ? `${o.index} — ${o.tag}` : o.index}</span><span className="mt-2 block text-[17px] font-medium tracking-[-0.02em]">{o.title}</span></span><ArrowRight className="size-5 transition-transform duration-500 ease-expo group-hover:translate-x-1" /></Link></li>))}
         </ul>
       </nav>
       <PreFooterCta heading={c.nav.cta.heading} button={c.nav.cta.button} />

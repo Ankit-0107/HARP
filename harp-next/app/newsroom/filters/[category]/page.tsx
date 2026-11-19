@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { category } = await params; const c = getContent();
   if (!(category in CATEGORY_SLUGS)) return {};
   const label = CATEGORY_SLUGS[category as CategorySlug];
-  return { title: `${label} — Newsroom — ${c.brand.name}`, description: c.seo.newsroom.description, alternates: { canonical: `/newsroom/filters/${category}` },
+  return { title: `${label} — Workshops — ${c.brand.name}`, description: c.seo.newsroom.description, alternates: { canonical: `/newsroom/filters/${category}` },
     robots: c.source === "reference" ? { index: false, follow: false } : undefined };
 }
 
@@ -25,13 +25,13 @@ export default async function NewsroomFilterPage({ params }: { params: Promise<P
   const { category } = await params;
   if (!(category in CATEGORY_SLUGS)) notFound();
   const c = getContent(); const label = CATEGORY_SLUGS[category as CategorySlug];
-  const all = await getEntries(); const entries = label === "All" ? all : all.filter((e) => e.category === label);
+  const all = await getEntries(); const entries = all.filter((e) => e.category === label);
   return (
     <>
       <section className="container-x pb-8 pt-28 md:pb-12">
         <p className="eyebrow mb-4">{c.newsroom.eyebrow}</p>
         <h1 className="h-display text-[clamp(3rem,8vw,8rem)] font-light"><SplitText text={c.newsroom.title} trigger="mount" delay={0.2} /></h1>
-        <nav aria-label="Newsroom categories" className="mt-10 flex flex-wrap gap-2">
+        <nav aria-label="Workshops categories" className="mt-10 flex flex-wrap gap-2">
           {(Object.entries(CATEGORY_SLUGS) as [CategorySlug, string][]).map(([slug, name]) => (
             <Link key={slug} href={`/newsroom/filters/${slug}`} aria-current={slug === category ? "page" : undefined}
               className={cn("rounded-full border px-4 py-2 font-mono text-[12px] uppercase transition-colors duration-500", slug === category ? "border-ink bg-ink text-white" : "border-black/15 hover:border-black")}>

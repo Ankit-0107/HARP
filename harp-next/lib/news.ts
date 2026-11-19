@@ -29,7 +29,7 @@ export async function getArticles(): Promise<Article[]> {
     list.push(m ? { entry: { ...e, ...cleanFront(m.front), slug: e.slug, status: "published" }, lead: m.front.lead, body: m.body } : { entry: e });
   }
   const added: Article[] = [...mdx].filter(([slug]) => !seen.has(slug)).map(([slug, m]) => ({
-    entry: { slug, title: m.front.title ?? slug, category: m.front.category ?? "Article", date: m.front.date ?? null, author: m.front.author, heroAssetId: m.front.heroAssetId ?? "hero-poster", authorAssetId: m.front.authorAssetId, status: "published" as const },
+    entry: { slug, title: m.front.title ?? slug, category: m.front.category ?? "Completed", date: m.front.date ?? null, author: m.front.author, heroAssetId: m.front.heroAssetId ?? "hero-poster", authorAssetId: m.front.authorAssetId, status: "published" as const },
     lead: m.front.lead, body: m.body,
   })).sort((a, b) => (b.entry.date ?? "").localeCompare(a.entry.date ?? ""));
   return [...added, ...list];
@@ -39,5 +39,5 @@ const cleanFront = (f: Front): Partial<NewsEntry> => Object.fromEntries(Object.e
 export const getEntries = async () => (await getArticles()).map((a) => a.entry);
 export const getArticle = async (slug: string) => (await getArticles()).find((a) => a.entry.slug === slug);
 
-export const CATEGORY_SLUGS = { all: "All", article: "Article", "case-study": "Case Study" } as const;
+export const CATEGORY_SLUGS = { completed: "Completed", ongoing: "Ongoing", upcoming: "Upcoming" } as const;
 export type CategorySlug = keyof typeof CATEGORY_SLUGS;
